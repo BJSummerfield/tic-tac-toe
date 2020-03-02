@@ -1,6 +1,15 @@
 class Board {
   constructor() {
     this.grid = this.createGrid()
+    this.player = this.createPlayer()
+    this.turn = 0
+    this.winner = false
+  }
+
+  createPlayer() {
+    var player1 = {token : 'x'}
+    var player2 = {token : 'o'}
+    return [player1, player2]
   }
  
   createGrid() {
@@ -10,14 +19,28 @@ class Board {
 
   placeMarker(mark, location) {
     this.grid[location] = mark
+    this.nextTurn()
     return this.grid
+  }
+
+  nextTurn() {
+    if (this.turn == 1) {
+      this.turn = 0
+    } else {
+      this.turn++
+    }
+  }
+
+  check(location) {
+    if (this.grid[location] === null) {
+      return true
+    } 
   }
 
   checkWin() {
     if  (this.checkHorizontal() || this.checkVertical() || this.checkDiag()) {
-      console.log('true')
-    } else {
-      console.log('false')
+      console.log('Winner')
+      this.winner = true
     }
   }
 
@@ -89,10 +112,6 @@ class Board {
     }
   }
 
-  win(token) {
-    console.log(`${token} wins!`)
-  }
-
   hChunk(array, size) {
     var length = array.length
     var j = 0
@@ -126,13 +145,12 @@ class Board {
       j += size
     }
     return x
-  }  
+  } 
+
+  win(token) {
+    console.log(`${token} wins!`)
+  } 
 
 }
 
-var b = new Board
-b.placeMarker("x", 2)
-b.placeMarker("x", 4)
-b.placeMarker("x", 7)
-b.checkWin()
-// console.log(b.grid)
+export default Board
