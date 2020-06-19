@@ -1,9 +1,9 @@
 #board-container {
   display: grid;
-  grid-gap: 2px;
+  /*grid-gap: 2px;*/
   justify-content: center;
-  grid-template-columns: repeat(3, 70px);
-  grid-template-rows: repeat(3, 70px);
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
 }
 
 .square {
@@ -13,7 +13,23 @@
   text-transform: uppercase;
   color: black;
   font-size: 26px;
-  background-color: #F4F1F0;
-  border: 3px solid #444;
-  border-radius: 10px;
+  /*padding: 1px;*/
+  /*margin: 0 -1px;*/
+  /*background-color: #F4F1F0;*/
+  /*border: 3px solid #444;*/
+  /*border-radius: 10px;*/
 }
+
+[id="0"],[id="1"],[id="2"] {
+  border-bottom: 5px solid black;
+}
+
+[id="6"],[id="7"],[id="8"] {
+  border-top: 5px solid black;
+}
+
+[id="1"],[id="4"],[id="7"]{
+  border-left:5px solid black;
+  border-right:5px solid black;
+}
+

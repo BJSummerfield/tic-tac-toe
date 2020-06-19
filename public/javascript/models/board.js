@@ -7,8 +7,8 @@ class Board {
   }
 
   createPlayer() {
-    var player1 = {token : 'x'}
-    var player2 = {token : 'o'}
+    var player1 = {token : 'x', 'ai' : false}
+    var player2 = {token : 'o', 'ai' : true}
     return [player1, player2]
   }
  
@@ -19,7 +19,6 @@ class Board {
 
   placeMarker(mark, location) {
     this.grid[location] = mark
-    this.nextTurn()
     return this.grid
   }
 
@@ -146,11 +145,6 @@ class Board {
     }
     return x
   } 
-
-  win(token) {
-    console.log(`${token} wins!`)
-  } 
-
 }
 
 export default Board
